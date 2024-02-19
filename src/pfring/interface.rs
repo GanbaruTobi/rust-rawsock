@@ -110,7 +110,7 @@ impl<'a> traits::DynamicInterface<'a> for Interface<'a> {
     }
 
     fn set_filter_cstr(&mut self, filter: &CStr) -> Result<(), Error> {
-        let result = unsafe { self.dll.pfring_set_bpf_filter(self.handle, filter.as_ptr() as *mut i8) };
+        let result = unsafe { self.dll.pfring_set_bpf_filter(self.handle, filter.as_ptr() as *mut u8) };
         if result == SUCCESS {
             Ok(())
         } else {
